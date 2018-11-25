@@ -31,7 +31,6 @@ static int z_hasnodamage(clientinfo *target, clientinfo *actor)
     if(!actor) return 0;    // does not apply if suicide
     if(antispawnkill && target->state.lastdeath && totalmillis-target->state.lastdeath < antispawnkill) return 3; // lastdeath is reused for spawntime
     if(z_shouldblockgameplay(actor) || z_shouldblockgameplay(target)) return 3; // if gameplay blocked for either, they cannot interact with each other
-    if(!m_edit) return 0;
     return servernodamage_global ? z_nodamage : max(target->xi.nodamage, actor->xi.nodamage);
 }
 
